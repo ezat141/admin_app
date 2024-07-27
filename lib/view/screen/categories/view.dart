@@ -22,7 +22,11 @@ class CategoriesView extends StatelessWidget {
         builder: (controller) => HandlingDataView(
           statusRequest: controller.statusRequest, 
           widget: PopScope(
-            // canPop: controller.myback(),
+            onPopInvoked: (isPopped) {
+              if (isPopped){
+                controller.myback();
+              }
+            },
             child: Container(
               padding: const EdgeInsets.symmetric(horizontal: 10),
               child: ListView.builder(

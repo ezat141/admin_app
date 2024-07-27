@@ -79,10 +79,12 @@ class CategoriesController extends GetxController {
     super.onInit();
   }
 
-  // myback(){
-  //   Get.offAllNamed(AppRoute.homepage);
-  //   return Future.value(false);
-  // }
+  Future<bool> myback() async {
+
+  Get.offAllNamed(AppRoute.homepage);
+
+    return Future.value(false);
+  }
 }
 
 

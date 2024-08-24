@@ -23,6 +23,7 @@ class AppRoute {
   static const String checkout = "/checkout";
   static const String addressadddetails = "/addressadddetails";
   // Orders 
+  static const String ordershome = "/ordershome";
   static const String orderspending = "/orderspending";
   static const String ordersaccepted = "/ordersaccepted";
   static const String ordersarchive = "/ordersarchive";

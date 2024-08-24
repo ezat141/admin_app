@@ -12,23 +12,25 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     HomeControllerImp controller = Get.put(HomeControllerImp());
     return Scaffold(
-      appBar: AppBar(title: Text('Home')),
+      appBar: AppBar(title: const Text('Home')),
       body: ListView(
         children: [
           GridView(
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 3, mainAxisExtent: 150),
-            physics: NeverScrollableScrollPhysics(),
+            physics: const NeverScrollableScrollPhysics(),
             shrinkWrap: true,
             children: [
               CardAdminHome(url: AppImageAsset.avatar, title: "categories", onClick: (){
                 Get.toNamed(AppRoute.categoriesview);
                 
               }),
-              CardAdminHome(url: AppImageAsset.avatar, title: "Users", onClick: (){
+              CardAdminHome(url: AppImageAsset.avatar, title: "Products", onClick: (){
+                Get.toNamed(AppRoute.productsview);
                 
               }),
-              CardAdminHome(url: AppImageAsset.avatar, title: "Notification", onClick: (){
+              CardAdminHome(url: AppImageAsset.avatar, title: "Orders", onClick: (){
+                Get.toNamed(AppRoute.ordershome);
                 
               }),
               CardAdminHome(url: AppImageAsset.avatar, title: "Message", onClick: (){

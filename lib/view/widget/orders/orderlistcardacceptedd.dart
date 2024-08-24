@@ -1,5 +1,5 @@
 
-import 'package:admin_app/controller/orders/archive_controller.dart';
+import 'package:admin_app/controller/orders/accepted_controller.dart';
 import 'package:admin_app/core/constant/color.dart';
 import 'package:admin_app/core/constant/routes.dart';
 import 'package:admin_app/data/model/ordersmodel.dart';
@@ -7,11 +7,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:jiffy/jiffy.dart';
 
-class CardOrdersListArchive extends GetView<OrdersArchiveController> {
+class CardOrdersListAccepted extends GetView<OrdersAcceptedController> {
   final OrdersModel listdata;
-
-  const CardOrdersListArchive({Key? key, required this.listdata})
-      : super(key: key);
+  const CardOrdersListAccepted({Key? key, required this.listdata}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +21,7 @@ class CardOrdersListArchive extends GetView<OrdersArchiveController> {
             children: [
               Row(
                 children: [
-                  Text("Order Number : #${listdata.ordersId}",
+                  Text("Order Number : #${listdata.ordersId} ",
                       style: const TextStyle(
                           fontSize: 18, fontWeight: FontWeight.bold)),
                   const Spacer(),
@@ -37,14 +35,14 @@ class CardOrdersListArchive extends GetView<OrdersArchiveController> {
                 ],
               ),
               const Divider(),
-              Text(
-                  "Order Type : ${controller.printOrderType(listdata.ordersType!.toString())}"),
-              Text("Order Price : ${listdata.ordersPrice} \$"),
+              // Text(
+              //     "Order Type : ${controller.printOrderType(listdata.ordersType!.toString())}"),
+              Text("Order Price : ${listdata.ordersPrice} \$ "),
               Text("Delivery Price : ${listdata.ordersPricedelivery} \$ "),
               Text(
                   "Payment Method : ${controller.printPaymentMethod(listdata.ordersPaymeentmethod!.toString())} "),
-              Text(
-                  "Order Status : ${controller.printOrderStatus(listdata.ordersStatus!.toString())} "),
+              // Text(
+              //     "Order Status : ${controller.printOrderStatus(listdata.ordersStatus!.toString())} "),
               const Divider(),
               Row(
                 children: [
@@ -63,16 +61,16 @@ class CardOrdersListArchive extends GetView<OrdersArchiveController> {
                     child: const Text("Details"),
                   ),
                   const SizedBox(width: 10),
-                  // if(listdata.ordersRating == 0) MaterialButton(
-                  //   onPressed: () {
-                  //     // showDialogRating(context, listdata.ordersId!);
-                  //   },
-                  //   color: AppColor.thirdColor,
-                  //   textColor: AppColor.secondColor,
-                  //   child: const Text("Rating"),
-                  // ),
-
-
+                  if (listdata.ordersStatus == 1)
+                    MaterialButton(
+                      onPressed: () {
+                        // controller.deleteOrder(listdata.ordersId!);
+                        controller.donePrepare(listdata.ordersId!, listdata.ordersType!);
+                      },
+                      color: AppColor.thirdColor,
+                      textColor: AppColor.secondColor,
+                      child: const Text("Done"),
+                    )
                 ],
               ),
             ],

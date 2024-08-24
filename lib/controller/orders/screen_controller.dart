@@ -1,4 +1,5 @@
 import 'package:admin_app/view/screen/orders/accepted.dart';
+import 'package:admin_app/view/screen/orders/archive.dart';
 import 'package:admin_app/view/screen/orders/pending.dart';
 
 import 'package:flutter/material.dart';
@@ -14,6 +15,7 @@ class OrderScreenControllerImp extends OrderScreenController {
   List<Widget> listPage = [
     const OrdersPending(),
     const OrdersAccepted(),
+    const OrdersArchiveView(),
   ];
 
   List bottomappbar = [
@@ -24,6 +26,10 @@ class OrderScreenControllerImp extends OrderScreenController {
     {
       "title": "Accepted",
       "icon": Icons.add_shopping_cart_outlined,
+    },
+    {
+      "title": "Archive",
+      "icon": Icons.archive_outlined,
     }
   ];
   @override

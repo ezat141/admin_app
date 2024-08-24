@@ -61,7 +61,7 @@ class CardOrdersList extends GetView<OrdersPendingController> {
                     child: const Text("Details"),
                   ),
                   const SizedBox(width: 10),
-                  if (listdata.ordersStatus == 2)
+                  if (listdata.ordersStatus == 0)
                     MaterialButton(
                       onPressed: () {
                         // controller.deleteOrder(listdata.ordersId!);
@@ -71,16 +71,16 @@ class CardOrdersList extends GetView<OrdersPendingController> {
                       textColor: AppColor.secondColor,
                       child: const Text("Approve"),
                     ),
-                  if (listdata.ordersStatus == 3)
-                    MaterialButton(
-                      onPressed: () {
-                        // controller.deleteOrder(listdata.ordersId!);
-                        controller.approveOrders(listdata.ordersId!);
-                      },
-                      color: AppColor.thirdColor,
-                      textColor: AppColor.secondColor,
-                      child: const Text("Done"),
-                    )
+                  // if (listdata.ordersStatus == 1)
+                  //   MaterialButton(
+                  //     onPressed: () {
+                  //       // controller.deleteOrder(listdata.ordersId!);
+                  //       controller.donePrepare(listdata.ordersId!, listdata.ordersType!);
+                  //     },
+                  //     color: AppColor.thirdColor,
+                  //     textColor: AppColor.secondColor,
+                  //     child: const Text("Done"),
+                  //   )
                 ],
               ),
             ],

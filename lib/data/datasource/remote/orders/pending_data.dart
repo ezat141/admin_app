@@ -11,13 +11,19 @@ class OrdersPendingData {
   // }
 
   Future<Map<String, dynamic>> getData() async {
-    var response = await crud.getData(AppLink.viewPendingOrders);
+    var response = await crud.getData(AppLink.viewpendingOrders);
     return response.fold((l) =>  throw l, (r) => r);
   }
 
-  approveOrder(int orderid, int deliveryid) async {
+  approveOrder(int orderid) async {
     var response = await crud.postData(
-        AppLink.approveOrders, {"orderid": orderid, "deliveryid": deliveryid});
+        AppLink.approveOrder, {"orderid": orderid});
+    return response.fold((l) => l, (r) => r);
+  }
+
+  donePrepare(int orderid, int ordertype) async {
+    var response = await crud
+        .postData(AppLink.prepare, {"orderid": orderid, "ordertype": ordertype});
     return response.fold((l) => l, (r) => r);
   }
 }

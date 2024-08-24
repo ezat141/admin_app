@@ -70,7 +70,7 @@ class OrdersPendingController extends GetxController {
     statusRequest = StatusRequest.loading;
     update();
     var response = await ordersPendingData.approveOrder(
-        orderid, myServices.sharedPreferences.getInt("id")!);
+        orderid);
     print("=============================== Controller $response ");
     statusRequest = handlingData(response);
     if (StatusRequest.success == statusRequest) {
@@ -79,6 +79,27 @@ class OrdersPendingController extends GetxController {
 
         getOrders();
 
+      } else {
+        statusRequest = StatusRequest.failure;
+      }
+      // End
+    }
+    update();
+  }
+
+  donePrepare(int orderid, int ordertype) async {
+    data.clear();
+    statusRequest = StatusRequest.loading;
+    update();
+    var response = await ordersPendingData.donePrepare(orderid, ordertype);
+    print("=============================== Controller $response ");
+    statusRequest = handlingData(response);
+    if (StatusRequest.success == statusRequest) {
+      // Start backend
+      if (response['status'] == "success") {
+        getOrders();
+        // List listdata = response['data'];
+        // data.addAll(listdata.map((e) => OrdersModel.fromJson(e)));
       } else {
         statusRequest = StatusRequest.failure;
       }

@@ -56,7 +56,7 @@ class CategoriesEdit extends StatelessWidget {
                             child: const Text("Choose category image"),
                           )),
                       if (controller.file != null)
-                        SvgPicture.file(controller.file!),
+                        SvgPicture.file(controller.file!, height: 80,),
                       CustomButtonLang(
                           textbutton: 'Save',
                           onPressed: () {

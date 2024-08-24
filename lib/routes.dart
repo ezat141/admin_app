@@ -15,6 +15,10 @@ import 'package:admin_app/view/screen/orders/accepted.dart';
 import 'package:admin_app/view/screen/orders/archive.dart';
 import 'package:admin_app/view/screen/orders/details.dart';
 import 'package:admin_app/view/screen/orders/pending.dart';
+import 'package:admin_app/view/screen/orders/screen.dart';
+import 'package:admin_app/view/screen/products/add.dart';
+import 'package:admin_app/view/screen/products/edit.dart';
+import 'package:admin_app/view/screen/products/view.dart';
 import 'package:get/get.dart';
 
 // Map<String, Widget Function(BuildContext)> routes = {
@@ -67,7 +71,11 @@ List<GetPage<dynamic>>? routes = [
   
   GetPage(name: AppRoute.categoriesview, page: () => const CategoriesView()),
   GetPage(name: AppRoute.categoriesadd, page: () => const CategoriesAdd()),
-    GetPage(name: AppRoute.categoriesedit, page: () => const CategoriesEdit()),
+  GetPage(name: AppRoute.categoriesedit, page: () => const CategoriesEdit()),
+  GetPage(name: AppRoute.productsview, page: () => const ProductsView()),
+  GetPage(name: AppRoute.productsadd, page: () => const ProductsAdd()),
+  GetPage(name: AppRoute.productsedit, page: () => const ProductsEdit()),
+
 
   // GetPage(name: AppRoute.categoryedit, page: () => const CategoryEdit()),      
   // GetPage(name: AppRoute.addressadd, page: () => const AddressAdd()),
@@ -75,5 +83,7 @@ List<GetPage<dynamic>>? routes = [
   GetPage(name: AppRoute.ordersaccepted, page: () => const OrdersAccepted()),
   GetPage(name: AppRoute.ordersdetails, page: () => const OrdersDetails()),
   GetPage(name: AppRoute.ordersarchive, page: () => const OrdersArchiveView()),
+    GetPage(name: AppRoute.ordershome, page: () => const OrderScreen()),
+
   // GetPage(name: AppRoute.offers, page: () => const OffersView()),
 ];

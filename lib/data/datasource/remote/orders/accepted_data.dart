@@ -5,14 +5,14 @@ import 'package:admin_app/linkapi.dart';
 class OrdersAcceptedData {
   Crud crud;
   OrdersAcceptedData(this.crud);
-  getData(int deliveryid) async {
+  getData() async {
     var response = await crud
-        .postData(AppLink.viewAcceptedOrders, {"deliveryid": deliveryid});
+        .getData(AppLink.viewacceptedOrders);
     return response.fold((l) => l, (r) => r);
   }
-  doneDelivery(int orderid) async {
+  donePrepare(int orderid, int ordertype) async {
     var response = await crud
-        .postData(AppLink.doneDelivery, {"orderid": orderid});
+        .postData(AppLink.prepare, {"orderid": orderid, "ordertype": ordertype});
     return response.fold((l) => l, (r) => r);
   }
 }

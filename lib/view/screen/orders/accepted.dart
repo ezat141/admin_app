@@ -1,6 +1,6 @@
 import 'package:admin_app/controller/orders/accepted_controller.dart';
 import 'package:admin_app/core/class/handlingdataview.dart';
-import 'package:admin_app/view/widget/orders/orderslistcard.dart';
+import 'package:admin_app/view/widget/orders/orderlistcardacceptedd.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -17,7 +17,7 @@ class OrdersAccepted extends StatelessWidget {
               widget: ListView.builder(
                 itemCount: controller.data.length,
                 itemBuilder: ((context, index) =>
-                    CardOrdersList(listdata: controller.data[index])),
+                    CardOrdersListAccepted(listdata: controller.data[index])),
               )))),
     );
   }

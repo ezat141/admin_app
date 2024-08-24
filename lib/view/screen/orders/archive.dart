@@ -9,11 +9,7 @@ class OrdersArchiveView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Get.put(OrdersArchiveController());
-    return Scaffold(
-        appBar: AppBar(
-          title: const Text('Orders'),
-        ),
-        body: Container(
+    return  Container(
           padding:const  EdgeInsets.all(10),
           child: GetBuilder<OrdersArchiveController>(
               builder: ((controller) => HandlingDataView(statusRequest: controller.statusRequest, widget: ListView.builder(
@@ -21,6 +17,6 @@ class OrdersArchiveView extends StatelessWidget {
                     itemBuilder: ((context, index) =>
                         CardOrdersListArchive(listdata: controller.data[index])),
                   )))),
-        ));
+        );
   }
 }

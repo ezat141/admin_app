@@ -24,7 +24,7 @@ class CategoriesView extends StatelessWidget {
           widget: PopScope(
             onPopInvoked: (isPopped) {
               if (isPopped){
-                controller.myback();
+                controller.myback;
               }
             },
             child: Container(
@@ -33,40 +33,46 @@ class CategoriesView extends StatelessWidget {
             
                 itemCount: controller.data.length,
                 itemBuilder: ((context, index) =>
-                    Card(child: Row(
-                      children: [
-                        Expanded(
-                          flex: 2,
-                          child: Container(
-                            padding: const EdgeInsets.all(4),
-                            child: SvgPicture.network(
-                              "${controller.data[index].image}",
-                              height: 80,
-                            ),
-                          )),
-                        Expanded(
-                          flex: 3,
-                          child: ListTile(
-                            trailing: Row(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                IconButton(onPressed: (){
+                    InkWell(
+                      onTap: () {
+                        controller.goToPageEdit(controller.data[index]);
+                      } ,
+                      child: Card(child: Row(
+                        children: [
+                          Expanded(
+                            flex: 2,
+                            child: Container(
+                              padding: const EdgeInsets.all(4),
+                              child: SvgPicture.network(
+                                "${controller.data[index].image}",
+                                height: 80,
+                              ),
+                            )),
+                          Expanded(
+                            flex: 3,
+                            child: ListTile(
+                              trailing: Row(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  // IconButton(onPressed: (){
+                                    
+                                  //   controller.goToPageEdit(controller.data[index]);
+                                  // }, icon: Icon(Icons.edit)),
                                   
-                                  controller.goToPageEdit(controller.data[index]);
-                                }, icon: Icon(Icons.edit)),
-                                IconButton(onPressed: (){
-                                  Get.defaultDialog(title: "Warning", middleText: "Are you sure you want to delete this category ?", onCancel: (){}, onConfirm: (){
-                                  controller.deleteCategory(controller.data[index].sId!);
-                                  Get.back();
-                                  });
-                                }, icon: Icon(Icons.delete_outline)),
-                              ],
-                            ),
-                            subtitle: Text("${controller.data[index].categoryDatetime}"),
-                            title: Text("${controller.data[index].categoryName}"),
-                          )),
-                      ],
-                    ))),
+                                  IconButton(onPressed: (){
+                                    Get.defaultDialog(title: "Warning", middleText: "Are you sure you want to delete this category ?", onCancel: (){}, onConfirm: (){
+                                    controller.deleteCategory(controller.data[index].sId!);
+                                    Get.back();
+                                    });
+                                  }, icon: Icon(Icons.delete_outline)),
+                                ],
+                              ),
+                              subtitle: Text("${controller.data[index].categoryDatetime}"),
+                              title: Text("${controller.data[index].categoryName}"),
+                            )),
+                        ],
+                      )),
+                    )),
               ),
             
                     ),

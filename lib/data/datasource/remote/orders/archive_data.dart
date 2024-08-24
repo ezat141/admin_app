@@ -5,8 +5,8 @@ import 'package:admin_app/linkapi.dart';
 class OrdersArchiveData {
   Crud crud;
   OrdersArchiveData(this.crud);
-  getData(String deliveryid) async {
-    var response = await crud.postData(AppLink.viewArchivedOrders, {"deliveryid": deliveryid});
+  getData() async {
+    var response = await crud.getData(AppLink.viewarchiveOrder);
     return response.fold((l) => l, (r) => r);
   }
 

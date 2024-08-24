@@ -5,13 +5,13 @@ import 'package:admin_app/core/errors/failures.dart';
 import 'package:admin_app/linkapi.dart';
 import 'package:dartz/dartz.dart';
 
-class CategoriesData {
+class ProductsData {
   Crud crud;
 
-  CategoriesData(this.crud);
+  ProductsData(this.crud);
 
   Future<Either<Failure, Map<String, dynamic>>> get() async {
-    return await crud.getData(AppLink.categoriesview);
+    return await crud.getData(AppLink.productsview);
   }
   // Future<Map<String, dynamic>> get() async {
   //   var response = await crud.getData(AppLink.categoriesview);
@@ -24,7 +24,7 @@ class CategoriesData {
   // }
   Future<Either<Failure, Map<String, dynamic>>> add(
       Map<String, dynamic> data) async {
-    return await crud.postData(AppLink.categoriesadd, data);
+    return await crud.postData(AppLink.productsadd, data);
   }
 
   Future<String> uploadFileToCloudinary(File file) async {
@@ -32,11 +32,11 @@ class CategoriesData {
   }
 
   Future<Either<Failure, Map<String, dynamic>>> edit(Map<String, dynamic> data) async {
-    return await crud.putData(AppLink.categoriesedit, data);
+    return await crud.putData(AppLink.productsedit, data);
   }
 
   delete(String id) async {
-    var response = await crud.deleteData(AppLink.categoriesdelete, {'id': id});
+    var response = await crud.deleteData(AppLink.productsdelete, {'id': id});
     return response.fold((l) => l, (r) => r);
   }
 }

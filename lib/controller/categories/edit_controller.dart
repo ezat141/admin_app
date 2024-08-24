@@ -31,12 +31,24 @@ class CategoriesEditController extends GetxController {
     if (formState.currentState!.validate()) {
       statusRequest = StatusRequest.loading;
       update();
-      Map<String, dynamic> data = {
-        "category_name": name.text,
-        "category_name_ar": namear.text,
-        "id": categoryModel.sId.toString()
-      };
-      Either<Failure, Map<String, dynamic>> response = await categoriesData.edit(data, file);
+    
+      try {
+        // Initialize imageUrl with the existing image URL from the categoryModel
+        String? imageUrl = categoryModel.image;
+
+        // Check if a new file has been selected
+        if (file != null) {
+          imageUrl = await categoriesData.uploadFileToCloudinary(file!);
+        }
+
+        Map<String, dynamic> data = {
+          "category_name": name.text,
+          "category_name_ar": namear.text,
+          "image": imageUrl,
+          "id": categoryModel.sId.toString()
+
+        };
+      Either<Failure, Map<String, dynamic>> response = await categoriesData.edit(data);
       print("=============================== Controller $response ");
       statusRequest = handlingData(response);
       response.fold(
@@ -52,10 +64,16 @@ class CategoriesEditController extends GetxController {
             c.getData();
           } else {
             statusRequest = StatusRequest.failure;
-            print("Edit Data Server Error: ${responseBody['message']}"); // Log server error message
+            print("Edit Data Server Error: ${responseBody['message']}");
+            Get.snackbar("Error", responseBody['message']); // Log server error message
           }
         },
       );
+    } catch (e) {
+        statusRequest = StatusRequest.failure;
+        print("Edit Data Failure: $e");
+        Get.snackbar("Error", "Failed to upload image");
+      }
       update();
     }
   }
@@ -93,6 +111,7 @@ class CategoriesEditController extends GetxController {
     namear = TextEditingController();
     name.text = categoryModel.categoryName!;
     namear.text = categoryModel.categoryNameAr!;
+
     super.onInit();
   }
 }

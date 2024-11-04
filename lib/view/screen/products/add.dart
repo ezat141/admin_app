@@ -51,7 +51,7 @@ class ProductsAdd extends StatelessWidget {
                           iconData: Icons.category,
                           mycontroller: controller.description,
                           valid: (val) {
-                            return validInput(val!, 1, 30, "");
+                            return validInput(val!, 1, 100, "");
                           },
                           isNumber: false),
                       CustomTextFormGlobal(
@@ -60,7 +60,7 @@ class ProductsAdd extends StatelessWidget {
                           iconData: Icons.category,
                           mycontroller: controller.descriptionar,
                           valid: (val) {
-                            return validInput(val!, 1, 30, "");
+                            return validInput(val!, 1, 100, "");
                           },
                           isNumber: false),
                       CustomTextFormGlobal(

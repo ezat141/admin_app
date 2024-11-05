@@ -21,19 +21,19 @@ class HomePage extends StatelessWidget {
             physics: const NeverScrollableScrollPhysics(),
             shrinkWrap: true,
             children: [
-              CardAdminHome(url: AppImageAsset.avatar, title: "categories", onClick: (){
+              CardAdminHome(url: AppImageAsset.categories, title: "Categories", onClick: (){
                 Get.toNamed(AppRoute.categoriesview);
                 
               }),
-              CardAdminHome(url: AppImageAsset.avatar, title: "Products", onClick: (){
+              CardAdminHome(url: AppImageAsset.products, title: "Products", onClick: (){
                 Get.toNamed(AppRoute.productsview);
                 
               }),
-              CardAdminHome(url: AppImageAsset.avatar, title: "Orders", onClick: (){
+              CardAdminHome(url: AppImageAsset.orders, title: "Orders", onClick: (){
                 Get.toNamed(AppRoute.ordershome);
                 
               }),
-              CardAdminHome(url: AppImageAsset.avatar, title: "Message", onClick: (){
+              CardAdminHome(url: AppImageAsset.reports, title: "Reports", onClick: (){
                 
               }),
             ],

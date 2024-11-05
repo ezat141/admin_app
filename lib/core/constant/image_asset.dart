@@ -15,7 +15,10 @@ class AppImageAsset {
   static const String noData = "$rootLottie/nodata.json";
   static const String server = "$rootLottie/server.json";
 
-  static const String avatar = "$rootImage/avatar.png";
+  static const String categories = "$rootImage/Categories.png";
+  static const String products = "$rootImage/004-box.png";
+  static const String orders = "$rootImage/orders.png";
+  static const String reports = "$rootImage/reports.png";
 
   static const String drivethruImage = "$rootImage/drivethru.png";
   static const String deliveryImage = "$rootImage/005-delivery-man.png";
